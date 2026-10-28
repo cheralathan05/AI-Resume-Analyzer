@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-resume-analyzer
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm run build:render
+    startCommand: npm run start:render
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        value: "*"

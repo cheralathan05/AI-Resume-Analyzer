@@ -1,0 +1,101 @@
+/* ============================================================
+   Obsidian Monolithic Button Styles
+   ============================================================ */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn:disabled,
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+/* Primary — Crisp Titanium Monolith */
+.btn--primary {
+  color: #050507;
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 4px 20px -2px rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.btn--primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #f4f4f5;
+  border-color: #f4f4f5;
+  box-shadow: 0 8px 30px -4px rgba(255, 255, 255, 0.32), 0 4px 12px rgba(0, 0, 0, 0.85);
+}
+
+.btn--primary:hover:not(:disabled) .btn__icon {
+  transform: translateX(3px);
+}
+
+/* Secondary — Obsidian Glass Surface */
+.btn--secondary {
+  color: var(--text-strong);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.btn--secondary:hover:not(:disabled) .btn__icon {
+  transform: translateX(2px);
+}
+
+/* Ghost — Minimalist Obsidian */
+.btn--ghost {
+  color: var(--text-muted);
+  background: transparent;
+  padding: 9px 16px;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn--block {
+  width: 100%;
+}

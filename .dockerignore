@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.git
+.github
+.vscode
+.env
+.env.local
+backend/src/uploads/*
+!backend/src/uploads/.gitkeep
+backend/data/*.json
+frontend/dist
+python-service

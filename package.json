@@ -1,0 +1,25 @@
+{
+  "name": "ai-resume-analyzer-root",
+  "version": "1.0.0",
+  "description": "Full-stack AI Resume Analyzer with Ollama and Embedded Database",
+  "scripts": {
+    "dev": "node start-all.js",
+    "start": "node start-all.js",
+    "start:prod": "node backend/src/server.js",
+    "build": "npm run build --prefix frontend",
+    "build:render": "npm --prefix backend install && npm --prefix frontend install && npm --prefix frontend run build",
+    "start:render": "node backend/src/server.js",
+    "render-build": "npm run build:render",
+    "render-start": "npm run start:render",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend"
+
+  },
+  "keywords": [
+    "resume",
+    "analyzer",
+    "ollama",
+    "ats"
+  ],
+  "license": "MIT"
+}

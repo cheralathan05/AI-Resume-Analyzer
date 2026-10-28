@@ -1,0 +1,9 @@
+# Resume Parser microservice dependencies
+# Pinned to known-good, widely-available versions for reproducible installs.
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+PyMuPDF==1.25.1
+spacy==3.8.2
+pydantic==2.10.4

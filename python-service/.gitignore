@@ -1,0 +1,10 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Runtime-generated parse results (keep the folder, ignore outputs)
+extracted/*.json

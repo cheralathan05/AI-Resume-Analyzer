@@ -1,0 +1,2 @@
+# This folder stores parsed resume JSON output (one file per /parse request).
+# Kept in version control via this placeholder; generated *.json files are runtime artifacts.

@@ -1,0 +1,458 @@
+/* ============================================================
+   Side-by-Side Resume Diff & Score Optimizer Styles
+   ============================================================ */
+
+.resume-diff-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.diff-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.diff-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #a855f7;
+  margin-bottom: 6px;
+}
+
+.diff-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin: 0 0 6px;
+}
+
+.diff-subtitle {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.diff-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Score Delta Bar */
+.score-delta-bar {
+  display: grid;
+  grid-template-columns: 240px 80px 240px 1fr;
+  align-items: center;
+  gap: 16px;
+  background: rgba(14, 14, 18, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+@media (max-width: 1024px) {
+  .score-delta-bar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.delta-score-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.delta-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.05em;
+}
+
+.delta-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.score-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  font-family: monospace;
+}
+
+.score-grade {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  font-weight: 700;
+}
+
+.score-grade.top {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.delta-caption {
+  font-size: 11.5px;
+  color: #71717a;
+}
+
+.delta-arrow-divider {
+  display: flex;
+  justify-content: center;
+}
+
+.delta-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: #4ade80;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.delta-stats-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 20px;
+}
+
+@media (max-width: 1024px) {
+  .delta-stats-group {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 16px;
+  }
+}
+
+.stat-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+.stat-txt {
+  font-size: 10.5px;
+  color: #a1a1aa;
+  font-weight: 600;
+}
+
+/* Filter pills */
+.filter-pill-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #71717a;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.filter-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.filter-btn.active {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+  font-weight: 600;
+}
+
+/* Diff Cards */
+.diff-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.diff-card {
+  background: rgba(14, 14, 18, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.diff-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 12px;
+}
+
+.diff-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.diff-section-tag {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.diff-boost-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+}
+
+.diff-highlights-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #a1a1aa;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.highlight-chip svg {
+  color: #4ade80;
+}
+
+/* Split view */
+.diff-split-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .diff-split-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+.diff-col {
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.original-col {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tailored-col {
+  background: rgba(74, 222, 128, 0.03);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.col-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #71717a;
+  letter-spacing: 0.04em;
+}
+
+.col-status-warn {
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.copy-btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-btn-sm:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.diff-text-box p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.diff-text-box.tailored-text p {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Skills Cloud */
+.skills-cloud {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.skill-chip {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-family: monospace;
+}
+
+.skill-chip.original-chip {
+  background: rgba(255, 255, 255, 0.05);
+  color: #d4d4d8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skill-chip.existing-chip {
+  background: rgba(255, 255, 255, 0.05);
+  color: #d4d4d8;
+}
+
+.skill-chip.new-chip {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: #4ade80;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.chip-plus {
+  font-weight: 900;
+}
+
+/* Takeaways Card */
+.takeaways-card {
+  background: rgba(14, 14, 18, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.takeaways-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.takeaways-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.takeaways-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.takeaways-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #d4d4d8;
+  line-height: 1.5;
+}
+
+.check-bullet {
+  color: #4ade80;
+  font-weight: 900;
+}

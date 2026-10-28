@@ -1,0 +1,36 @@
+name: Keep Render services warm
+
+# Ping /health every 10 min so free-tier services don't sleep.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: keep-warm
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping parser + backend /health
+        env:
+          PARSER_URL: ${{ vars.PARSER_URL || 'https://ai-resume-parser-fhdr.onrender.com' }}
+          BACKEND_URL: ${{ vars.BACKEND_URL || 'https://ai-resume-backend-m3tv.onrender.com' }}
+        run: |
+          set -euo pipefail
+
+          ping() {
+            name="$1"; url="$2"
+            echo "::group::Pinging $name -> $url"
+            curl -sS -L --fail \
+              --retry 5 --retry-delay 15 --retry-all-errors \
+              --connect-timeout 20 --max-time 150 \
+              "$url" -o /dev/null -w "  $name -> HTTP %{http_code} in %{time_total}s\n"
+            echo "::endgroup::"
+          }
+
+          ping "parser"  "$PARSER_URL/health"
+          ping "backend" "$BACKEND_URL/api/health"

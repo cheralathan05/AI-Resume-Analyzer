@@ -1,0 +1,251 @@
+/* ============================================================
+   Obsidian Monolithic Monochrome Design System
+   AI-Resume-Analyzer - Elite Executive Monochrome Aesthetic
+   ============================================================ */
+
+:root {
+  /* Monolithic Pure Black, Gray & Titanium White Palette */
+  --mono-black: #000000;
+  --mono-950: #09090b;
+  --mono-900: #111113;
+  --mono-850: #18181b;
+  --mono-800: #202024;
+  --mono-750: #27272a;
+  --mono-700: #3f3f46;
+  --mono-600: #52525b;
+  --mono-500: #71717a;
+  --mono-400: #a1a1aa;
+  --mono-300: #d4d4d8;
+  --mono-200: #e4e4e7;
+  --mono-100: #f4f4f5;
+  --mono-white: #ffffff;
+
+  /* Brand Accents - Pure Titanium & Silver Monochrome */
+  --brand-500: #e4e4e7;
+  --brand-600: #ffffff;
+  --brand-700: #d4d4d8;
+  --brand-gradient: linear-gradient(135deg, #ffffff 0%, #e4e4e7 50%, #a1a1aa 100%);
+  --metallic-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 100%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.14);
+  --glass-border-hover: 1px solid rgba(255, 255, 255, 0.32);
+
+  /* Deep Obsidian Monolith Surfaces */
+  --bg: #050507;
+  --bg-soft: #0c0c0f;
+  --bg-elevated: #141418;
+  --surface: #0e0e12;
+  --surface-hover: #18181d;
+  --border: #222227;
+  --border-strong: #36363d;
+
+  /* Typography */
+  --text: #d4d4d8;
+  --text-strong: #ffffff;
+  --text-muted: #9c9ca5;
+  --text-dim: #63636c;
+
+  /* Monochromatic Signal Tokens (High Contrast Luminance) */
+  --success: #ffffff;
+  --success-bg: rgba(255, 255, 255, 0.12);
+  --success-border: rgba(255, 255, 255, 0.35);
+
+  --warn: #e4e4e7;
+  --warn-bg: rgba(255, 255, 255, 0.08);
+  --warn-border: rgba(255, 255, 255, 0.22);
+
+  --danger: #a1a1aa;
+  --danger-bg: rgba(255, 255, 255, 0.05);
+  --danger-border: rgba(255, 255, 255, 0.15);
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.7);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
+  --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.98);
+  --glow-subtle: 0 0 25px rgba(255, 255, 255, 0.05);
+  --glow-strong: 0 0 35px rgba(255, 255, 255, 0.16);
+  --ring: rgba(255, 255, 255, 0.3);
+
+  /* Geometry */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+  --container: 1200px;
+  --nav-height: 72px;
+
+  /* World-Class Bespoke Typography Stack */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  color-scheme: dark;
+}
+
+/* Optional Monochromatic Charcoal Mode */
+html[data-theme="light"] {
+  --bg: #050507;
+  --bg-soft: #0c0c0f;
+  --bg-elevated: #141418;
+  --surface: #0e0e12;
+  --border: #222227;
+  --border-strong: #36363d;
+  --text: #d4d4d8;
+  --text-strong: #ffffff;
+  --text-muted: #9c9ca5;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.012em;
+  overflow-x: hidden;
+}
+
+/* Ambient Monolith Glow in the Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 600px;
+  background: radial-gradient(ellipse 65% 55% at 50% -10%, rgba(255, 255, 255, 0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.038em;
+  margin: 0;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+.font-serif,
+.editorial-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: 88px 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+}
+
+/* Keyframes */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mono-500);
+}

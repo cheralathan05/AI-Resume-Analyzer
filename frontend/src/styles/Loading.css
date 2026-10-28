@@ -1,0 +1,187 @@
+/* ============================================================
+   Analysis loading page styles.
+   ============================================================ */
+
+.loading {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  padding: 48px 0 72px;
+}
+
+.loading__card {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 44px 40px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+/* Pulsing orb with rotating ring */
+.loading__orb {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 26px;
+  display: grid;
+  place-items: center;
+}
+
+.loading__orb-core {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  color: #fff;
+  background-image: var(--brand-gradient);
+  box-shadow: 0 10px 30px -8px rgba(255, 255, 255, 0.25);
+  animation: orb-pulse 1.8s ease-in-out infinite;
+}
+
+.loading__orb-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--brand-500);
+  border-right-color: color-mix(in srgb, var(--brand-500) 40%, transparent);
+  animation: orb-spin 1s linear infinite;
+}
+
+@keyframes orb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orb-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.loading__title {
+  font-size: 1.6rem;
+}
+
+.loading__subtitle {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+/* Progress bar */
+.loading__progress {
+  margin: 30px 0 8px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+.loading__progress-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background-image: var(--brand-gradient);
+  background-size: 200% 100%;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+.loading__percent {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brand-600);
+}
+
+/* Steps list */
+.loading__steps {
+  margin-top: 28px;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+.loading__step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.loading__step--active {
+  color: var(--text-strong);
+  border-color: color-mix(in srgb, var(--brand-500) 45%, var(--border));
+  background: color-mix(in srgb, var(--brand-500) 7%, var(--surface));
+  transform: translateX(2px);
+}
+
+.loading__step--done {
+  color: var(--text-strong);
+}
+
+.loading__step-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.loading__step--done .loading__step-mark {
+  color: #fff;
+  border-color: transparent;
+  background-image: var(--brand-gradient);
+}
+
+.loading__step--active .loading__step-mark {
+  border-color: var(--brand-500);
+  color: var(--brand-500);
+}
+
+/* small spinner shown on the active step */
+.loading__spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--brand-500) 30%, transparent);
+  border-top-color: var(--brand-500);
+  animation: orb-spin 0.7s linear infinite;
+}
+
+@media (max-width: 560px) {
+  .loading__card {
+    padding: 32px 22px;
+  }
+}

@@ -1,0 +1,381 @@
+/* ============================================================
+   ATS Resume Visual Builder & PDF Exporter Studio
+   ============================================================ */
+
+.builder-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+  min-height: calc(100vh - 72px);
+}
+
+@media (max-width: 1024px) {
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.builder-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: calc(100vh - 100px);
+  position: sticky;
+  top: 86px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+}
+
+.builder-card {
+  background: var(--bg-soft, #111114);
+  border: 1px solid var(--border, #27272a);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.builder-card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.builder-input-group {
+  margin-bottom: 12px;
+}
+
+.builder-label {
+  display: block;
+  font-size: 11.5px;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-muted, #a1a1aa);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.builder-input,
+.builder-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.builder-input:focus,
+.builder-textarea:focus {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.builder-template-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.builder-template-tab {
+  padding: 8px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.12s ease;
+}
+
+.builder-template-tab:hover,
+.builder-template-tab.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Resume Preview Paper Canvas (Light Paper for 100% ATS Print)
+   ============================================================ */
+
+.resume-paper-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.resume-paper-toolbar {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-soft, #111114);
+  border: 1px solid var(--border, #27272a);
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.resume-paper {
+  width: 100%;
+  max-width: 800px;
+  min-height: 1050px;
+  background: #ffffff;
+  color: #111827;
+  padding: 48px 52px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+/* Template 1: Modern Minimalist (Monochrome Precision) */
+.resume-tmpl-modern {
+  font-family: var(--font-sans);
+}
+
+.resume-tmpl-modern .r-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #000000;
+  margin: 0 0 4px 0;
+}
+
+.resume-tmpl-modern .r-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #52525b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.resume-tmpl-modern .r-contact {
+  font-size: 11px;
+  color: #71717a;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid #e4e4e7;
+  margin-bottom: 18px;
+}
+
+.resume-tmpl-modern .r-section-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000000;
+  border-bottom: 1.5px solid #27272a;
+  padding-bottom: 3px;
+  margin: 16px 0 10px 0;
+}
+
+/* Template 2: Executive Serif (Harvard Style) */
+.resume-tmpl-executive {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #000000;
+}
+
+.resume-tmpl-executive .r-name {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 6px 0;
+}
+
+.resume-tmpl-executive .r-title {
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.resume-tmpl-executive .r-contact {
+  font-size: 11px;
+  text-align: center;
+  justify-content: center;
+  color: #334155;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 16px;
+}
+
+.resume-tmpl-executive .r-section-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #000000;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 2px;
+  margin: 16px 0 10px 0;
+}
+
+/* Template 3: Tech Monospace (DevOps / Hacker Monochrome) */
+.resume-tmpl-tech {
+  font-family: var(--font-mono);
+  color: #000000;
+}
+
+.resume-tmpl-tech .r-name {
+  font-size: 21px;
+  font-weight: 800;
+  color: #000000;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.resume-tmpl-tech .r-title {
+  font-size: 12px;
+  color: #52525b;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.resume-tmpl-tech .r-contact {
+  font-size: 10.5px;
+  color: #71717a;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px dashed #27272a;
+  margin-bottom: 16px;
+}
+
+.resume-tmpl-tech .r-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #000000;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 2px;
+  margin: 14px 0 8px 0;
+}
+
+/* Common Section Styles */
+.r-item {
+  margin-bottom: 12px;
+}
+
+.r-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.r-item-role {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 12.5px;
+}
+
+.r-item-company {
+  font-weight: 600;
+  color: #475569;
+  font-size: 12px;
+}
+
+.r-item-dates {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.r-bullets {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+}
+
+.r-bullets li {
+  margin-bottom: 3px;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.r-skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.r-skill-pill {
+  font-size: 10.5px;
+  padding: 1px 6px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PRINT MEDIA STYLES — Zero UI Clutter, Pure A4/Letter PDF
+   ============================================================ */
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .app-header,
+  .navbar,
+  .builder-sidebar,
+  .resume-paper-toolbar,
+  .term-launcher-fab,
+  .cmd-palette-backdrop {
+    display: none !important;
+  }
+
+  .builder-layout {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-paper-wrapper {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-paper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    padding: 24px 32px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+}

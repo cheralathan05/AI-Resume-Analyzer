@@ -1,0 +1,25 @@
+# Dependencies / build / env
+node_modules/
+**/node_modules/
+frontend/dist/
+backend/src/uploads/*
+!backend/src/uploads/.gitkeep
+.env
+**/.env
+!.env.example
+!**/.env.example
+
+# Python
+python-service/venv/
+python-service/.venv/
+python-service/__pycache__/
+python-service/extracted/*.json
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Local leftovers
+ss/
+*.zip
