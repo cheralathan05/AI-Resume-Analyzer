@@ -1,5 +1,7 @@
 # Deploying AI Resume Analyzer on Render 🚀
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/cheralathan05/AI-Resume-Analyzer)
+
 This repository is pre-configured for **1-Click zero-configuration deployment on Render** (Free Tier supported).
 
 ---

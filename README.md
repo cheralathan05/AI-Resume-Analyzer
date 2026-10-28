@@ -11,6 +11,12 @@
   <img alt="License" src="https://img.shields.io/badge/License-MIT-blue">
 </p>
 
+<p align="center">
+  <a href="https://render.com/deploy?repo=https://github.com/cheralathan05/AI-Resume-Analyzer">
+    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+  </a>
+</p>
+
 **AI Resume Analyzer** is a production-style, microservice full-stack application that turns a raw resume PDF into actionable, recruiter-grade insights. A Python (FastAPI) microservice extracts structured data **on-device**, an Express backend orchestrates uploads and runs a purpose-built **ATS scoring engine**, and a modern React dashboard visualizes the results — score, skill match, completeness, matched/missing keywords, and concrete suggestions.
 
 Built to demonstrate clean service boundaries, REST API design, deterministic NLP parsing, and real deployment — without depending on any paid LLM API.
@@ -466,7 +472,17 @@ The localhost defaults above exist purely for local development. They are
 
 ## ☁️ Deployment
 
-All three services are deployed on **Render** as separate, independently scalable units:
+### 🌟 1-Click Unified Render Deployment (Single Web Service)
+This repository is configured for zero-configuration, 1-click deployment on Render as a unified Web Service (serving both the Node API and React frontend on one single Free Tier instance with embedded JSON database persistence).
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/cheralathan05/AI-Resume-Analyzer)
+
+👉 **Read the full step-by-step guide: [DEPLOYMENT_RENDER.md](./DEPLOYMENT_RENDER.md)**
+
+---
+
+### Alternative: Multi-Service Architecture
+All three services can also be deployed on **Render** as separate, independently scalable units:
 
 | Service | Render Type | Live URL |
 | ------- | ----------- | -------- |

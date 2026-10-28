@@ -7,10 +7,13 @@ services:
     buildCommand: npm run build:render
     startCommand: npm run start:render
     healthCheckPath: /api/health
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
+      - key: NODE_VERSION
+        value: 20.18.0
       - key: CORS_ORIGIN
         value: "*"
